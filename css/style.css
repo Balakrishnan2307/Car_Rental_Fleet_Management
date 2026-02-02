@@ -64,24 +64,6 @@ section {
 }
 
 
-/* Define base variables */
-:root {
-  --bg-color: #ffffff;
-  --text-color: #000000;
-}
-
-/* Override variables for the dark theme */
-[data-theme="dark"] {
-  --bg-color: #121212;
-  --text-color: #ffffff;
-}
-
-/* Use variables throughout your CSS */
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.2s linear, color 0.2s linear;
-}
 
 
 body {
@@ -117,7 +99,7 @@ h5,
 h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  color: var(--text-color );
+  color: var(--text-color);
 }
 
 p {
@@ -12068,7 +12050,7 @@ h5,
 
 @media (max-width: 991.98px) {
   .hero-wrap {
-    height: 1150px;
+    height: 1000px;
   }
 
   .hero-wrap .overlay {
@@ -12095,11 +12077,7 @@ h5,
   height: 850px;
 }
 
-@media (max-width: 991.98px) {
-  .slider-text {
-    height: 1150px;
-  }
-}
+
 
 .slider-text h1 {
   font-size: 44px;
@@ -12972,6 +12950,7 @@ h5,
 .ftco-about {
   position: relative;
   z-index: 0;
+  background: #01d28e !important;
 }
 
 .ftco-about:after {
@@ -13171,7 +13150,7 @@ textarea.form-control {
 }
 
 .bg-primary {
-  background: #1089ff !important;
+  background: #01d28e !important;
 }
 
 .bg-black {
@@ -13469,6 +13448,7 @@ textarea.form-control {
 
 .testimony-section {
   position: relative;
+  z-index: 2;
 }
 
 .testimony-section .owl-carousel {

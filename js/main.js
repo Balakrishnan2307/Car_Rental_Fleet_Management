@@ -29,32 +29,6 @@ AOS.init({
 	};
 
 
-	const toggleButton = document.getElementById('theme-toggle');
-	const currentTheme = localStorage.getItem('theme');
-
-	// Apply saved theme on load, or default to light
-	if (currentTheme) {
-		document.documentElement.setAttribute('data-theme', currentTheme);
-		if (currentTheme === 'dark') {
-			toggleButton.textContent = 'Switch to Light Mode';
-		}
-	}
-
-	// Handle button click
-	toggleButton.addEventListener('click', () => {
-		let theme = document.documentElement.getAttribute('data-theme');
-		if (theme === 'light') {
-			theme = 'dark';
-			toggleButton.textContent = 'Switch to Light Mode';
-		} else {
-			theme = 'light';
-			toggleButton.textContent = 'Switch to Dark Mode';
-		}
-		document.documentElement.setAttribute('data-theme', theme);
-		localStorage.setItem('theme', theme); // Save preference
-	});
-
-
 
 	$(window).stellar({
 		responsive: true,
