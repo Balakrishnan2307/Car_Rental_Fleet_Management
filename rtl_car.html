@@ -31,8 +31,8 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light ftco_navbar ftco-navbar-light">
-        <a class="navbar-brand" href="index.html"><img src="./images/logo.png" alt="" width="150px"></a>
+    <nav class="navbar navbar-expand-lg ftco_navbar ftco-navbar-light">
+        <a class="navbar-brand" href="index.html"><img src="./images/logo_green.png" alt="" width="150px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -53,13 +53,13 @@
                 <li class="nav-item"><a href="rtl_about.html" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="rtl_services.html" class="nav-link">Services</a></li>
                 <li class="nav-item"><a href="rtl_pricing.html" class="nav-link">Pricing</a></li>
-                <li class="nav-item"><a href="rtl_car.html" class="nav-link">Cars</a></li>
+                <li class="nav-item"><a href="rtl_car.html" class="nav-link active">Cars</a></li>
                 <li class="nav-item"><a href="rtl_blog.html" class="nav-link">Blog</a></li>
                 <li class="nav-item"><a href="rtl_contact.html" class="nav-link">Contact</a></li>
                 <li class="nav-item"><a href="rtl_contact.html" class="nav-link">Dashboard</a></li>
             </ul>
-            <a href="car.html" class="btn btn-primary">RTL</a>
-            <!-- <button id="theme-toggle">Switch to Dark Mode</button> -->
+            <a href="car.html" class="btn btn-secondary">RTL</a>
+            <button class="" style="margin-left: 5px; margin-right: 5px;" id="toggleBtn">🌙 Dark Mode</button>
 
         </div>
     </nav>
@@ -80,7 +80,7 @@
     </section>
 
 
-    <section class="ftco-section bg-light">
+    <section class="ftco-section" dir="ltr">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
@@ -304,9 +304,10 @@
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4">
                         <h2 class="ftco-heading-2"><a href="#" class="logo"><img src="./images/logo_green.png"
-                                    width="200px" alt="" style="margin-top: -20px;"></a></h2>
+                                    width="200px" alt="" style="margin-top: -20px; margin-left: -20px;"></a></h2>
                         <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                            there live the blind texts.</p>
+                            there live the
+                            blind texts.</p>
                         <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                             <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                             <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -343,8 +344,16 @@
                         <h2 class="ftco-heading-2">Have a Questions?</h2>
                         <div class="block-23 mb-3">
                             <ul>
-                                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain
-                                        View, San Francisco, California, USA</span></li>
+                                <li>
+                                    <a href="#">
+                                        <span class="icon icon-map-marker">
+
+                                        </span>
+                                        <span class="text">
+                                            203 Fake St. Mountain View, San
+                                            Francisco, California, USA</span>
+                                    </a>
+                                </li>
                                 <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929
                                             210</span></a></li>
                                 <li><a href="#"><span class="icon icon-envelope"></span><span
