@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DriveFlow - Complete Management System</title>
+    <title>DriveFlow - Enterprise Dashboard</title>
     <style>
         /* --- CSS VARIABLES & THEME --- */
         :root {
@@ -145,6 +145,9 @@
             cursor: pointer;
             font-weight: 600;
             transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .btn-primary:hover {
@@ -172,7 +175,7 @@
             height: 100%;
         }
 
-        /* --- DASHBOARD GRIDS & CARDS --- */
+        /* --- DASHBOARD GRID & CARDS --- */
         .dashboard-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -221,6 +224,49 @@
             font-size: 0.8rem;
             color: var(--success);
             font-weight: 600;
+        }
+
+        /* --- QUICK ACTIONS (New) --- */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .qa-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .qa-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary-color);
+        }
+
+        .qa-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(1, 210, 142, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .qa-title {
+            font-weight: 600;
+            font-size: 0.95rem;
         }
 
         /* --- TABLES --- */
@@ -295,41 +341,210 @@
             color: var(--danger);
         }
 
-        /* --- FORMS --- */
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
+        /* --- INBOX UI (New) --- */
+        .inbox-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 0.75rem;
+        .inbox-item {
+            background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 6px;
-            background: var(--bg-color);
-            color: var(--text-color);
-            outline: none;
-            transition: border 0.3s;
+            padding: 1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: var(--transition);
         }
 
-        .form-control:focus {
+        .inbox-item:hover {
             border-color: var(--primary-color);
         }
 
-        /* --- ANALYTICS CHARTS (CSS ONLY) --- */
+        .inbox-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .inbox-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #eee;
+            object-fit: cover;
+        }
+
+        .inbox-content h4 {
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .inbox-content p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .inbox-time {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .unread-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        /* --- MAINTENANCE UI (New) --- */
+        .maint-timeline {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+        }
+
+        .maint-col {
+            min-width: 300px;
+            flex: 1;
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .maint-col h3 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .maint-card {
+            background: var(--bg-color);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--border-color);
+        }
+
+        .maint-card.urgent {
+            border-left-color: var(--danger);
+        }
+
+        .maint-card h4 {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .maint-card p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        /* --- PROMOTIONS UI (New) --- */
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .promo-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .promo-banner {
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .promo-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .promo-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .promo-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .promo-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: var(--primary-color);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(20px);
+        }
+
+        /* --- CHARTS & FLEET & UTILITY (Reused) --- */
         .charts-row {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -348,7 +563,6 @@
             flex-direction: column;
         }
 
-        /* Bar Chart */
         .bar-chart-container {
             flex-grow: 1;
             display: flex;
@@ -387,53 +601,6 @@
             color: var(--text-muted);
         }
 
-        .bar-val {
-            position: absolute;
-            top: -20px;
-            width: 100%;
-            text-align: center;
-            font-size: 0.75rem;
-            font-weight: bold;
-        }
-
-        /* Pie Chart */
-        .pie-chart-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-        }
-
-        .pie-chart {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            background: conic-gradient(var(--primary-color) 0% 40%, var(--warning) 40% 70%, var(--danger) 70% 100%);
-            position: relative;
-        }
-
-        .pie-legend {
-            margin-top: 1.5rem;
-            display: flex;
-            gap: 1rem;
-            font-size: 0.85rem;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            color: var(--text-muted);
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-        }
-
-        /* --- FLEET GRID --- */
         .fleet-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -489,7 +656,6 @@
             gap: 0.5rem;
         }
 
-        /* --- UTILITY --- */
         .user-menu {
             position: relative;
         }
@@ -544,6 +710,14 @@
             cursor: pointer;
             font-size: 0.9rem;
         }
+        .dropdown-item a {
+            /* padding: 0.75rem 1rem; */
+            display: block;
+            color: var(--text-color);
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
 
         .dropdown-item:hover {
             background-color: rgba(0, 0, 0, 0.05);
@@ -574,8 +748,8 @@
                 grid-template-columns: 1fr;
             }
 
-            .form-grid {
-                grid-template-columns: 1fr;
+            .maint-timeline {
+                flex-direction: column;
             }
         }
 
@@ -615,17 +789,11 @@
     <!-- SIDEBAR NAVIGATION -->
     <nav class="sidebar" id="sidebar">
         <div class="brand">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="10" width="20" height="8" rx="2"></rect>
-                <path d="M5 10l2-5h10l2 5"></path>
-                <circle cx="7" cy="18" r="2"></circle>
-                <circle cx="17" cy="18" r="2"></circle>
-            </svg>
-            Drive<span>Flow</span>
+            
+            <span><a href="index.html"><img src="images/logo_green.png" width="150px" alt=""></a></span>
         </div>
 
         <ul class="nav-links" id="navLinks">
-            <!-- Admin Navigation -->
             <li class="nav-item"><a class="nav-link active" onclick="navigate('dashboard', this)">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <rect x="3" y="3" width="7" height="7"></rect>
@@ -656,14 +824,6 @@
                     </svg>
                     All Bookings
                 </a></li>
-            <li class="nav-item"><a class="nav-link" onclick="navigate('new-booking', this)">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="12" y1="8" x2="12" y2="16"></line>
-                        <line x1="8" y1="12" x2="16" y2="12"></line>
-                    </svg>
-                    New Booking
-                </a></li>
             <li class="nav-item"><a class="nav-link" onclick="navigate('fleet', this)">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <rect x="2" y="10" width="20" height="8" rx="2"></rect>
@@ -677,6 +837,36 @@
                         <circle cx="9" cy="7" r="4"></circle>
                     </svg>
                     Customers
+                </a></li>
+
+            <!-- NEW SECTIONS -->
+            <li class="nav-item" style="margin-top:1rem; border-top:1px solid var(--border-color); padding-top:1rem;">
+                <span
+                    style="font-size:0.75rem; text-transform:uppercase; color:var(--text-muted); padding-left:1rem;">Operations</span>
+            </li>
+            <li class="nav-item"><a class="nav-link" onclick="navigate('inbox', this)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    Inbox
+                    <span
+                        style="margin-left:auto; background:var(--danger); color:white; font-size:0.7rem; padding:2px 6px; border-radius:10px;">3</span>
+                </a></li>
+            <li class="nav-item"><a class="nav-link" onclick="navigate('maintenance', this)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
+                        </path>
+                    </svg>
+                    Maintenance
+                </a></li>
+            <li class="nav-item"><a class="nav-link" onclick="navigate('promotions', this)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                        <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                    </svg>
+                    Promotions
                 </a></li>
         </ul>
     </nav>
@@ -717,7 +907,7 @@
                     <div class="dropdown" id="userDropdown">
                         <span class="dropdown-item">Profile</span>
                         <span class="dropdown-item">Settings</span>
-                        <span class="dropdown-item logout" onclick="showToast('Logged out')">Logout</span>
+                        <span class="dropdown-item logout" onclick="showToast('Logged out')"><a href="index.html" style="text-decoration: none;">Logout</a></span>
                     </div>
                 </div>
             </div>
@@ -770,13 +960,15 @@
                 case 'analytics': renderAnalytics(); break;
                 case 'sales': renderSales(); break;
                 case 'bookings': renderBookingsList(); break;
-                case 'new-booking': renderNewBooking(); break;
                 case 'fleet': renderFleet(); break;
                 case 'customers': renderCustomers(); break;
+                case 'inbox': renderInbox(); break; // New
+                case 'maintenance': renderMaintenance(); break; // New
+                case 'promotions': renderPromotions(); break; // New
             }
         }
 
-        // --- VIEW: DASHBOARD (Overview) ---
+        // --- VIEW: DASHBOARD (Updated) ---
         function renderDashboard() {
             pageTitle.textContent = "Dashboard Overview";
             mainContainer.innerHTML = `
@@ -814,347 +1006,298 @@
                         <div class="stat-trend">+5.2% <span style="color:var(--text-muted); font-weight:400;">this week</span></div>
                     </div>
                 </div>
+
+                <!-- NEW SECTION: QUICK ACTIONS -->
+                <h3 style="margin-bottom:1rem;">Quick Actions</h3>
+                <div class="quick-actions">
+                    <div class="qa-card" onclick="navigate('new-booking', null)">
+                        <div class="qa-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg></div>
+                        <div class="qa-title">New Booking</div>
+                    </div>
+                    <div class="qa-card" onclick="navigate('promotions', null)">
+                        <div class="qa-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg></div>
+                        <div class="qa-title">Create Promo</div>
+                    </div>
+                    <div class="qa-card" onclick="navigate('maintenance', null)">
+                        <div class="qa-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
+                        <div class="qa-title">Schedule Repair</div>
+                    </div>
+                    <div class="qa-card" onclick="navigate('sales', null)">
+                        <div class="qa-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></div>
+                        <div class="qa-title">Generate Report</div>
+                    </div>
+                </div>
                 
                 <h3 style="margin-bottom:1rem;">Recent Activity</h3>
                 ${getBookingsTableHTML(3)}
             `;
         }
 
-        // --- VIEW: ANALYTICS ---
+        // --- VIEW: ANALYTICS (Reused) ---
         function renderAnalytics() {
             pageTitle.textContent = "Business Analytics";
             mainContainer.innerHTML = `
                 <div class="dashboard-grid">
-                    <div class="stat-card">
-                        <span class="stat-label">Total Bookings</span>
-                        <div class="stat-value">1,240</div>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-label">Avg. Rental Duration</span>
-                        <div class="stat-value">4.2 Days</div>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-label">Customer Satisfaction</span>
-                        <div class="stat-value">4.8/5.0</div>
-                    </div>
+                    <div class="stat-card"><span class="stat-label">Total Bookings</span><div class="stat-value">1,240</div></div>
+                    <div class="stat-card"><span class="stat-label">Avg. Rental Duration</span><div class="stat-value">4.2 Days</div></div>
+                    <div class="stat-card"><span class="stat-label">Customer Satisfaction</span><div class="stat-value">4.8/5.0</div></div>
                 </div>
-
                 <div class="charts-row">
-                    <!-- Bar Chart: Monthly Bookings -->
                     <div class="chart-card">
                         <h4>Monthly Bookings (2023)</h4>
                         <div class="bar-chart-container">
-                            ${['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'].map((m, i) => {
-                const h = Math.floor(Math.random() * 60) + 40; // Random height
-                return `
-                                    <div class="bar-group">
-                                        <div class="bar" style="height: ${h}%;">
-                                            <span class="bar-val">${h * 1.5}</span>
-                                        </div>
-                                        <span class="bar-label">${m}</span>
-                                    </div>
-                                `;
-            }).join('')}
+                            ${['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'].map(m => `<div class="bar-group"><div class="bar" style="height: ${Math.floor(Math.random() * 60) + 40}%;"></div><span class="bar-label">${m}</span></div>`).join('')}
                         </div>
                     </div>
-
-                    <!-- Pie Chart: Fleet Status -->
                     <div class="chart-card">
-                        <h4>Fleet Status Distribution</h4>
-                        <div class="pie-chart-wrapper">
-                            <div class="pie-chart"></div>
-                            <div class="pie-legend">
-                                <div class="legend-item"><div class="dot" style="background:var(--primary-color)"></div> Rented</div>
-                                <div class="legend-item"><div class="dot" style="background:var(--warning)"></div> Maint.</div>
-                                <div class="legend-item"><div class="dot" style="background:var(--danger)"></div> Idle</div>
-                            </div>
+                        <h4>Fleet Status</h4>
+                        <div style="display:flex; justify-content:center; align-items:center; height:100%; color:var(--text-muted);">
+                            <div style="width:150px; height:150px; border-radius:50%; background:conic-gradient(var(--primary-color) 0% 60%, var(--warning) 60% 80%, var(--danger) 80% 100%);"></div>
                         </div>
                     </div>
                 </div>
             `;
         }
 
-        // --- VIEW: SALES & REVENUE ---
+        // --- VIEW: SALES (Reused) ---
         function renderSales() {
             pageTitle.textContent = "Sales & Revenue";
             mainContainer.innerHTML = `
                 <div class="dashboard-grid">
-                    <div class="stat-card">
-                        <span class="stat-label">Gross Revenue</span>
-                        <div class="stat-value" style="color:var(--primary-color)">$124,500</div>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-label">Net Profit</span>
-                        <div class="stat-value">$89,200</div>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-label">Refunds Processed</span>
-                        <div class="stat-value" style="color:var(--danger)">$1,250</div>
-                    </div>
+                    <div class="stat-card"><span class="stat-label">Gross Revenue</span><div class="stat-value" style="color:var(--primary-color)">$124,500</div></div>
+                    <div class="stat-card"><span class="stat-label">Net Profit</span><div class="stat-value">$89,200</div></div>
+                    <div class="stat-card"><span class="stat-label">Refunds</span><div class="stat-value" style="color:var(--danger)">$1,250</div></div>
                 </div>
-
                 <div class="table-container">
-                    <div class="table-header">
-                        <h3>Recent Transactions</h3>
-                        <div>
-                            <button class="btn-outline" onclick="showToast('Downloading CSV...')">Export CSV</button>
-                            <button class="btn-primary">Generate Report</button>
-                        </div>
-                    </div>
+                    <div class="table-header"><h3>Recent Transactions</h3><button class="btn-outline">Export</button></div>
                     <table>
-                        <thead>
-                            <tr>
-                                <th>Transaction ID</th>
-                                <th>Date</th>
-                                <th>Customer</th>
-                                <th>Vehicle</th>
-                                <th>Amount</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
+                        <thead><tr><th>ID</th><th>Date</th><th>Customer</th><th>Amount</th><th>Status</th></tr></thead>
                         <tbody>
-                            <tr>
-                                <td>#TRX-9988</td>
-                                <td>Oct 24, 2023</td>
-                                <td>John Doe</td>
-                                <td>Toyota RAV4</td>
-                                <td style="font-weight:bold; color:var(--primary-color)">$180.00</td>
-                                <td><span class="status-badge status-active">Paid</span></td>
-                            </tr>
-                            <tr>
-                                <td>#TRX-9987</td>
-                                <td>Oct 23, 2023</td>
-                                <td>Sarah Connor</td>
-                                <td>Tesla Model 3</td>
-                                <td style="font-weight:bold; color:var(--primary-color)">$340.00</td>
-                                <td><span class="status-badge status-active">Paid</span></td>
-                            </tr>
-                            <tr>
-                                <td>#TRX-9986</td>
-                                <td>Oct 22, 2023</td>
-                                <td>Mike Ross</td>
-                                <td>BMW 5 Series</td>
-                                <td style="font-weight:bold; color:var(--primary-color)">$270.00</td>
-                                <td><span class="status-badge status-cancelled">Refunded</span></td>
-                            </tr>
-                            <tr>
-                                <td>#TRX-9985</td>
-                                <td>Oct 21, 2023</td>
-                                <td>Rachel Green</td>
-                                <td>Jeep Wrangler</td>
-                                <td style="font-weight:bold; color:var(--primary-color)">$450.00</td>
-                                <td><span class="status-badge status-active">Paid</span></td>
-                            </tr>
+                            <tr><td>#TRX-9988</td><td>Oct 24</td><td>John Doe</td><td>$180.00</td><td><span class="status-badge status-active">Paid</span></td></tr>
+                            <tr><td>#TRX-9987</td><td>Oct 23</td><td>Alice S.</td><td>$340.00</td><td><span class="status-badge status-active">Paid</span></td></tr>
                         </tbody>
                     </table>
                 </div>
             `;
         }
 
-        // --- VIEW: BOOKING LIST ---
+        // --- VIEW: BOOKINGS (Reused) ---
         function renderBookingsList() {
             pageTitle.textContent = "Booking Management";
             mainContainer.innerHTML = `
                 <div class="table-container">
-                    <div class="table-header">
-                        <h3>All Bookings</h3>
-                        <div style="display:flex; gap:10px;">
-                            <input type="text" placeholder="Search ID or Customer..." class="form-control" style="width:200px;">
-                            <select class="form-control" style="width:150px;">
-                                <option>All Status</option>
-                                <option>Active</option>
-                                <option>Pending</option>
-                                <option>Completed</option>
-                            </select>
-                            <button class="btn-primary" onclick="navigate('new-booking', null)">+ New Booking</button>
-                        </div>
-                    </div>
+                    <div class="table-header"><h3>All Bookings</h3><button class="btn-primary" onclick="navigate('new-booking', null)">+ New Booking</button></div>
                     ${getBookingsTableHTML(10, true)}
                 </div>
             `;
         }
 
-        // --- VIEW: NEW BOOKING FORM ---
+        // Helper for New Booking Form (Missing from previous full render, adding basic)
         function renderNewBooking() {
-            pageTitle.textContent = "Create New Booking";
-            mainContainer.innerHTML = `
-                <div class="stat-card" style="max-width: 800px; margin: 0 auto;">
-                    <form onsubmit="event.preventDefault(); showToast('Booking Created Successfully!'); navigate('bookings', null);">
-                        <h3 style="margin-bottom:1.5rem; border-bottom:1px solid var(--border-color); padding-bottom:10px;">Customer Details</h3>
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label>Full Name</label>
-                                <input type="text" class="form-control" placeholder="e.g. John Doe" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Email Address</label>
-                                <input type="email" class="form-control" placeholder="john@example.com" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Phone Number</label>
-                                <input type="tel" class="form-control" placeholder="+1 (555) 000-0000">
-                            </div>
-                            <div class="form-group">
-                                <label>Driver License ID</label>
-                                <input type="text" class="form-control" placeholder="License Number">
-                            </div>
-                        </div>
-
-                        <h3 style="margin:2rem 0 1.5rem 0; border-bottom:1px solid var(--border-color); padding-bottom:10px;">Rental Details</h3>
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label>Select Vehicle</label>
-                                <select class="form-control">
-                                    ${fleetData.map(c => `<option value="${c.name}">${c.name} ($${c.price}/day)</option>`).join('')}
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Pick-up Location</label>
-                                <select class="form-control">
-                                    <option>Downtown Office</option>
-                                    <option>Airport Terminal 1</option>
-                                    <option>City Mall Branch</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Pick-up Date</label>
-                                <input type="date" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Return Date</label>
-                                <input type="date" class="form-control" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label style="display:flex; align-items:center; gap:10px; cursor:pointer;">
-                                <input type="checkbox"> Add Full Insurance Coverage (+$15/day)
-                            </label>
-                        </div>
-
-                        <div style="margin-top:2rem; display:flex; justify-content:flex-end; gap:1rem;">
-                            <button type="button" class="btn-outline" onclick="navigate('bookings', null)">Cancel</button>
-                            <button type="submit" class="btn-primary">Confirm Booking</button>
-                        </div>
-                    </form>
-                </div>
-            `;
+            pageTitle.textContent = "New Booking";
+            mainContainer.innerHTML = `<div class="stat-card" style="padding:2rem;"><h3>Booking Form</h3><p style="margin:1rem 0;">Form fields would go here...</p><button class="btn-primary" onclick="showToast('Booking Created'); navigate('bookings', null)">Submit</button></div>`;
         }
 
-        // --- VIEW: FLEET MANAGEMENT ---
+        // --- VIEW: FLEET (Reused) ---
         function renderFleet() {
             pageTitle.textContent = "Fleet Management";
-            let carsHtml = fleetData.map(car => `
-                <div class="car-card">
-                    <img src="${car.image}" class="car-image" alt="${car.name}">
-                    <div class="car-details">
-                        <div class="car-title">
-                            ${car.name}
-                            <span class="status-badge ${getStatusClass(car.status)}" style="font-size: 0.75rem;">${car.status}</span>
-                        </div>
-                        <div class="car-meta">
-                            <span>${car.type}</span> • <span>$${car.price}/day</span>
-                        </div>
-                        <div class="car-actions">
-                            <button class="btn-outline" onclick="showToast('Editing ${car.name}...')">Edit</button>
-                            <button class="btn-outline" style="color:var(--danger); border-color:var(--danger);" onclick="showToast('Maintenance Mode')">Maintain</button>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-
             mainContainer.innerHTML = `
                 <div class="table-container" style="display:flex; justify-content:space-between; align-items:center; padding:1rem;">
-                    <h3>Vehicle Inventory</h3>
-                    <button class="btn-primary" onclick="showToast('Add Vehicle Form')">+ Add Vehicle</button>
+                    <h3>Inventory</h3>
+                    <button class="btn-primary">+ Add Vehicle</button>
                 </div>
                 <div class="fleet-grid">
-                    ${carsHtml}
+                    ${fleetData.map(c => `
+                        <div class="car-card">
+                            <img src="${c.image}" class="car-image" alt="${c.name}">
+                            <div class="car-details">
+                                <div class="car-title">${c.name} <span class="status-badge ${getStatusClass(c.status)}" style="font-size: 0.75rem;">${c.status}</span></div>
+                                <div class="car-meta">${c.type} • $${c.price}/day</div>
+                                <div class="car-actions"><button class="btn-outline">Edit</button><button class="btn-outline" style="color:var(--danger);">Delete</button></div>
+                            </div>
+                        </div>
+                    `).join('')}
                 </div>
             `;
         }
 
-        // --- VIEW: CUSTOMERS ---
+        // --- VIEW: CUSTOMERS (Reused) ---
         function renderCustomers() {
             pageTitle.textContent = "Customer Database";
             mainContainer.innerHTML = `
+                <div class="table-container"><div class="table-header"><h3>Registered Users</h3></div>
+                <table>
+                    <thead><tr><th>Name</th><th>Email</th><th>Status</th></tr></thead>
+                    <tbody>
+                        <tr><td>John Doe</td><td>john@ex.com</td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>Alice Smith</td><td>alice@ex.com</td><td><span class="status-badge status-active">Active</span></td></tr>
+                    </tbody>
+                </table>
+                </div>
+            `;
+        }
+
+        // --- NEW VIEW: INBOX ---
+        function renderInbox() {
+            pageTitle.textContent = "Inbox & Notifications";
+            mainContainer.innerHTML = `
+                <div class="dashboard-grid">
+                    <div class="stat-card" onclick="showToast('Filtering by unread')"><span class="stat-label">Unread Messages</span><div class="stat-value">3</div></div>
+                    <div class="stat-card" onclick="showToast('Showing Support tickets')"><span class="stat-label">Support Tickets</span><div class="stat-value">5</div></div>
+                </div>
+                
                 <div class="table-container">
-                    <div class="table-header">
-                        <h3>Registered Users</h3>
-                        <input type="text" placeholder="Search customer..." class="form-control" style="width:250px;">
+                    <div class="table-header"><h3>Messages</h3></div>
+                    <div class="inbox-list">
+                        <div class="inbox-item">
+                            <div class="inbox-left">
+                                <div class="unread-dot"></div>
+                                <img src="https://picsum.photos/seed/u1/40/40" class="inbox-avatar" alt="User">
+                                <div class="inbox-content">
+                                    <h4>Refund Request - Booking #102</h4>
+                                    <p>Alice Smith is requesting a cancellation due to personal...</p>
+                                </div>
+                            </div>
+                            <span class="inbox-time">10 mins ago</span>
+                        </div>
+                        <div class="inbox-item">
+                            <div class="inbox-left">
+                                <div class="unread-dot"></div>
+                                <img src="https://picsum.photos/seed/u2/40/40" class="inbox-avatar" alt="User">
+                                <div class="inbox-content">
+                                    <h4>Vehicle Damage Report</h4>
+                                    <p>Driver submitted photos of a scratch on BMW 5 Series...</p>
+                                </div>
+                            </div>
+                            <span class="inbox-time">1 hour ago</span>
+                        </div>
+                        <div class="inbox-item">
+                            <div class="inbox-left">
+                                <div class="unread-dot"></div>
+                                <div class="user-avatar" style="width:40px; height:40px;">SYS</div>
+                                <div class="inbox-content">
+                                    <h4>System Alert: Fleet Maintenance Due</h4>
+                                    <p>3 vehicles are due for scheduled maintenance within 24h.</p>
+                                </div>
+                            </div>
+                            <span class="inbox-time">2 hours ago</span>
+                        </div>
+                        <div class="inbox-item">
+                            <div class="inbox-left">
+                                <img src="https://picsum.photos/seed/u3/40/40" class="inbox-avatar" alt="User">
+                                <div class="inbox-content">
+                                    <h4>New Inquiry: Long-term Rental</h4>
+                                    <p>Company X is interested in a fleet contract for 3 months...</p>
+                                </div>
+                            </div>
+                            <span class="inbox-time">Yesterday</span>
+                        </div>
                     </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Customer</th>
-                                <th>Email</th>
-                                <th>Joined Date</th>
-                                <th>Total Bookings</th>
-                                <th>Total Spent</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div style="display:flex; align-items:center; gap:10px;">
-                                        <div class="user-avatar" style="background:#01d28e;">JD</div>
-                                        <div>
-                                            <div style="font-weight:600;">John Doe</div>
-                                            <div style="font-size:0.8rem; color:var(--text-muted);">ID: 88392</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>john@example.com</td>
-                                <td>Oct 10, 2023</td>
-                                <td>3</td>
-                                <td style="font-weight:600;">$540.00</td>
-                                <td><span class="status-badge status-active">Active</span></td>
-                                <td><button class="btn-outline" style="padding:0.2rem 0.5rem;">View</button></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div style="display:flex; align-items:center; gap:10px;">
-                                        <div class="user-avatar" style="background:#faad14;">AS</div>
-                                        <div>
-                                            <div style="font-weight:600;">Alice Smith</div>
-                                            <div style="font-size:0.8rem; color:var(--text-muted);">ID: 99201</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>alice@example.com</td>
-                                <td>Sep 22, 2023</td>
-                                <td>1</td>
-                                <td style="font-weight:600;">$90.00</td>
-                                <td><span class="status-badge status-active">Active</span></td>
-                                <td><button class="btn-outline" style="padding:0.2rem 0.5rem;">View</button></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div style="display:flex; align-items:center; gap:10px;">
-                                        <div class="user-avatar" style="background:#ff4d4f;">BJ</div>
-                                        <div>
-                                            <div style="font-weight:600;">Bob Jones</div>
-                                            <div style="font-size:0.8rem; color:var(--text-muted);">ID: 77123</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>bob@example.com</td>
-                                <td>Aug 15, 2023</td>
-                                <td>0</td>
-                                <td style="font-weight:600;">$0.00</td>
-                                <td><span class="status-badge status-cancelled">Blacklisted</span></td>
-                                <td><button class="btn-outline" style="padding:0.2rem 0.5rem;">View</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                </div>
+            `;
+        }
+
+        // --- NEW VIEW: MAINTENANCE ---
+        function renderMaintenance() {
+            pageTitle.textContent = "Maintenance Schedule";
+            mainContainer.innerHTML = `
+                <div class="table-container" style="display:flex; justify-content:flex-end; padding:0; background:none; box-shadow:none; border:none;">
+                    <button class="btn-primary" onclick="showToast('Creating Maintenance Task')">+ Schedule Service</button>
+                </div>
+                <div class="maint-timeline">
+                    <div class="maint-col">
+                        <h3>Urgent</h3>
+                        <div class="maint-card urgent">
+                            <h4>Tire Rotation - Toyota RAV4</h4>
+                            <p>Vehicle: RA-992 • Due: Today</p>
+                            <button class="btn-outline" style="font-size:0.8rem; width:100%;">Mark as Done</button>
+                        </div>
+                        <div class="maint-card urgent">
+                            <h4>Brake Inspection - BMW 5 Series</h4>
+                            <p>Vehicle: BM-112 • Due: Yesterday</p>
+                            <button class="btn-outline" style="font-size:0.8rem; width:100%;">Mark as Done</button>
+                        </div>
+                    </div>
+                    <div class="maint-col">
+                        <h3>Upcoming</h3>
+                        <div class="maint-card">
+                            <h4>Oil Change - Tesla Model 3</h4>
+                            <p>Vehicle: TS-001 • Due: Oct 28</p>
+                            <button class="btn-outline" style="font-size:0.8rem; width:100%;">Details</button>
+                        </div>
+                        <div class="maint-card">
+                            <h4>Air Filter - Jeep Wrangler</h4>
+                            <p>Vehicle: JP-334 • Due: Nov 02</p>
+                            <button class="btn-outline" style="font-size:0.8rem; width:100%;">Details</button>
+                        </div>
+                    </div>
+                    <div class="maint-col">
+                        <h3>Completed</h3>
+                        <div class="maint-card" style="opacity:0.7;">
+                            <h4>Car Wash - Mercedes C-Class</h4>
+                            <p>Completed on Oct 20</p>
+                            <span style="font-size:0.8rem; color:var(--success);">✔ Verified</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- NEW VIEW: PROMOTIONS ---
+        function renderPromotions() {
+            pageTitle.textContent = "Promotions & Offers";
+            mainContainer.innerHTML = `
+                <div class="table-container" style="display:flex; justify-content:flex-end; padding:0; background:none; box-shadow:none; border:none;">
+                    <button class="btn-primary" onclick="showToast('Opening Campaign Creator')">+ Create Campaign</button>
+                </div>
+                <div class="promo-grid">
+                    <div class="promo-card">
+                        <div class="promo-banner"><span class="promo-badge">20% OFF</span></div>
+                        <div class="promo-body">
+                            <div class="promo-title">Summer Getaway</div>
+                            <p class="promo-desc">Discount on all SUV bookings for the upcoming season.</p>
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto;">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked onchange="showToast(this.checked ? 'Promo Activated' : 'Promo Disabled')">
+                                    <span class="slider"></span>
+                                </label>
+                                <button class="btn-outline" style="padding:0.2rem 0.8rem; font-size:0.9rem;">Edit</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="promo-card">
+                        <div class="promo-banner" style="background:var(--warning);"><span class="promo-badge">Free Upgrade</span></div>
+                        <div class="promo-body">
+                            <div class="promo-title">Loyalty Bonus</div>
+                            <p class="promo-desc">Gold members get free upgrade to Sedan class.</p>
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto;">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked onchange="showToast(this.checked ? 'Promo Activated' : 'Promo Disabled')">
+                                    <span class="slider"></span>
+                                </label>
+                                <button class="btn-outline" style="padding:0.2rem 0.8rem; font-size:0.9rem;">Edit</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="promo-card">
+                        <div class="promo-banner" style="background:#333;"><span class="promo-badge">Black Friday</span></div>
+                        <div class="promo-body">
+                            <div class="promo-title">Early Bird Special</div>
+                            <p class="promo-desc">Flat rate $40/day for bookings made in advance.</p>
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto;">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" onchange="showToast(this.checked ? 'Promo Activated' : 'Promo Disabled')">
+                                    <span class="slider"></span>
+                                </label>
+                                <button class="btn-outline" style="padding:0.2rem 0.8rem; font-size:0.9rem;">Edit</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             `;
         }
 
         // --- HELPERS ---
-
         function getBookingsTableHTML(limit, actions = false) {
             const data = bookingsData.slice(0, limit);
             const rows = data.map(b => `
@@ -1205,23 +1348,19 @@
         document.getElementById('mobileMenuBtn').addEventListener('click', () => {
             document.getElementById('sidebar').classList.toggle('mobile-open');
         });
-
         document.getElementById('themeToggle').addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
         });
-
         document.getElementById('userMenuBtn').addEventListener('click', (e) => {
             e.stopPropagation();
             document.getElementById('userDropdown').classList.toggle('show');
         });
-
         document.addEventListener('click', () => {
             document.getElementById('userDropdown').classList.remove('show');
         });
 
         // Init
         renderDashboard();
-
     </script>
 </body>
 
